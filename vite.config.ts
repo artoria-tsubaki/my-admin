@@ -26,6 +26,13 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       cors: true,
       proxy: createProxy(viteEnv.VITE_PROXY)
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/styles/variables.scss" as *;`
+        }
+      }
+    },
     build: {
       outDir: "dist", // 指定输出路径
       minify: "esbuild",
